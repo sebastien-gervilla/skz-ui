@@ -1,6 +1,7 @@
 import React, { ReactNode, useEffect, useRef } from 'react';
 
 export interface SkzModalProps {
+    open: boolean,
     setOpen: (willOpen: boolean) => void,
     body: ReactNode,
     keepFocus?: boolean
@@ -9,7 +10,7 @@ export interface SkzModalProps {
 const SkzModal = (props: SkzModalProps) => {
 
     const modalRef = useRef<HTMLDivElement>(null);
-    const { setOpen, body, keepFocus } = props;
+    const { open, setOpen, body, keepFocus } = props;
 
     useEffect(() => {
         const handleClickOut = (event: MouseEvent) => {
@@ -27,7 +28,7 @@ const SkzModal = (props: SkzModalProps) => {
         <div className="skz-modal_wrapper">
             <div className="skz-modal" ref={modalRef}>
 
-                { body }
+                { open && body }
 
             </div>
         </div>

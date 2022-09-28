@@ -1,18 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom/client'
-import { MyCounter } from 'my-react-typescript-package'
+import { SkzModal } from 'skz-ui';
+
+const App = () => {
+    const [openModal, setOpenModal] = useState(false);
+
+    return (
+        <div className="App">
+            <button onClick={() => setOpenModal(true)}>Open modal</button>
+            <SkzModal 
+                open={openModal}
+                setOpen={setOpenModal}
+                body={
+                    <p>Hello world !</p>
+                }
+            />
+        </div>
+    );
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <div>
-      <h2>Default counter</h2>
-      <MyCounter />
-    </div>
-    <hr />
-    <div>
-      <h2>Counter with predefined value</h2>
-      <MyCounter value={5} />
-    </div>
+    <App />
   </React.StrictMode>,
 )

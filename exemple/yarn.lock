@@ -1185,11 +1185,6 @@ msgpackr@^1.5.4:
   optionalDependencies:
     msgpackr-extract "^2.1.2"
 
-my-react-typescript-package@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/my-react-typescript-package/-/my-react-typescript-package-1.0.0.tgz#e8c00c21bec5ac2f2f631a00a569b7b050d1bcb9"
-  integrity sha512-QYyexFl7zQ9H6HOrERhpS/pG8jfFB1M9ViroYYeGbZ0hu78PJWJZaRwAAa9QbouYSYV/nHQMBr2mqS6YBMF++g==
-
 node-addon-api@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-3.2.1.tgz#81325e0a2117789c0128dab65e7e38f07ceba161"
@@ -1313,11 +1308,6 @@ posthtml@^0.16.4, posthtml@^0.16.5:
     posthtml-parser "^0.11.0"
     posthtml-render "^3.0.0"
 
-process@^0.11.10:
-  version "0.11.10"
-  resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
-  integrity sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==
-
 react-dom@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.2.0.tgz#22aaf38708db2674ed9ada224ca4aa708d821e3d"
@@ -1369,6 +1359,11 @@ semver@^5.7.0, semver@^5.7.1:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
   integrity sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==
+
+skz-ui@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/skz-ui/-/skz-ui-0.0.1.tgz#bd96e40546f2cf4099bdfae6bf87a7889a507f92"
+  integrity sha512-J9it1YwruqiYf8nheKAj1+zQR2BULrQEsfL2DihbHmd/js1v7sd4iiTCnKnYB5DlduB7zIMydoIsO2+RXf7sWg==
 
 source-map-support@~0.5.20:
   version "0.5.21"

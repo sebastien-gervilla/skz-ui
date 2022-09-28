@@ -1,1 +1,3 @@
-export * from './components';
+import { SkzModal } from './components';
+
+export { SkzModal };
