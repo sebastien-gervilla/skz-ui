@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 
 export interface SkzModalProps {
     open: boolean,
-    setOpen: (willOpen: boolean) => void,
+    onClose: () => void,
     body: ReactNode,
     keepFocus?: boolean
 }
 
-const SkzModal = (props: SkzModalProps) => {
+const Modal = (props: SkzModalProps) => {
 
     const modalRef = useRef<HTMLDivElement>(null);
-    const { open, setOpen, body, keepFocus } = props;
+    const { open, onClose, body, keepFocus } = props;
 
     useEffect(() => {
         console.log("This is testing");
@@ -19,13 +19,13 @@ const SkzModal = (props: SkzModalProps) => {
         const handleClickOut = (event: MouseEvent) => {
             const modal = modalRef.current;
             if (modal && modal.contains(event.target as Node))
-                setOpen(false);
+                onClose();
         }
 
         !keepFocus && document.addEventListener('mousedown', handleClickOut);
 
         return () => { !keepFocus && document.removeEventListener('mousedown', handleClickOut) };
-    }, [modalRef, setOpen, keepFocus]);
+    }, [modalRef, onClose, keepFocus]);
 
     return open && ReactDOM.createPortal(
         <div className="skz-modal_wrapper" style={_sModalWrapper}>
@@ -59,4 +59,4 @@ const _sModal: CSSProperties = {
 
 //#endregion
 
-export default SkzModal;
+export default Modal;

@@ -1,3 +1,4 @@
-import SkzModal from "./SkzModal";
+import Modal from "./Modal";
+import Snackbar from "./Snackbar";
 
-export { SkzModal };
+export { Modal, Snackbar };

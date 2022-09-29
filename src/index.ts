@@ -1,3 +1,3 @@
-import { SkzModal } from './components';
+import { Modal, Snackbar } from './components';
 
-export { SkzModal };
+export { Modal, Snackbar };
