@@ -8,14 +8,11 @@ export interface SkzModalProps {
     keepFocus?: boolean
 }
 
-const Modal = (props: SkzModalProps) => {
+const Modal = ({open, onClose, body, keepFocus = false}: SkzModalProps) => {
 
     const modalRef = useRef<HTMLDivElement>(null);
-    const { open, onClose, body, keepFocus } = props;
 
     useEffect(() => {
-        console.log("This is testing");
-        
         const handleClickOut = (event: MouseEvent) => {
             const modal = modalRef.current;
             if (modal && modal.contains(event.target as Node))
