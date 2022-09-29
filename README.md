@@ -27,7 +27,7 @@ Add `SkzModal` to your component:
 
 ```js
 import React, { useState } from 'react'
-import { SkzModal } from 'skz-ui'
+import { Modal } from 'skz-ui'
 
 const App = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -35,9 +35,9 @@ const App = () => {
     return (
         <div className="App">
             <button onClick={() => setOpenModal(true)}>Open modal</button>
-            <SkzModal 
+            <Modal 
                 open={openModal}
-                setOpen={setOpenModal}
+                onClose={() => setOpenModal(false)}
                 body={
                     <p>Hello world !</p>
                 }
