@@ -5,9 +5,7 @@
 ![npm-typescript]
 [![License][github-license]][github-license-url]
 
-DESCRIPTION HERE
-
-[**Live Demo**](https://sebastien-gervilla.github.io/skz-ui/)
+A React component library with some cool features !
 
 ## Installation:
 
