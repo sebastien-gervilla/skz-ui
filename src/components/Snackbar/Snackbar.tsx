@@ -30,7 +30,7 @@ const Snackbar = ({open, onClose, message, buttonText = 'UNDO', className = '', 
     }
 
     return open ? ReactDOM.createPortal(
-        <div className={"skz-snackbar" + className ? ` ${className}` : ''} style={_sSnackbar}>
+        <div className={"skz-snackbar" + (className ? ` ${className}` : '')} style={_sSnackbar}>
 
             <p className='skz-snackbar_message' style={_sText}>{message}</p>
             <button className='skz-snackbar_close-btn' onClick={handleClose} style={_sButton}>{buttonText}</button>
