@@ -17,7 +17,7 @@ const Sidebar = ({open, onClose, body, side = 'left', className = '', keepFocus 
     useEffect(() => {
         const handleClickOut = (event: MouseEvent) => {
             const modal = modalRef.current;
-            if (modal && modal.contains(event.target as Node))
+            if (modal && !modal.contains(event.target as Node))
                 onClose();
         }
 
@@ -34,7 +34,7 @@ const Sidebar = ({open, onClose, body, side = 'left', className = '', keepFocus 
             { body }
 
         </div>
-    , document.getElementById("root") as Element)
+    , document.body)
 };
 
 //#region Styles

@@ -15,7 +15,7 @@ const Modal = ({open, onClose, body, keepFocus = false}: SkzModalProps) => {
     useEffect(() => {
         const handleClickOut = (event: MouseEvent) => {
             const modal = modalRef.current;
-            if (modal && modal.contains(event.target as Node))
+            if (modal && !modal.contains(event.target as Node))
                 onClose();
         }
 
@@ -32,7 +32,7 @@ const Modal = ({open, onClose, body, keepFocus = false}: SkzModalProps) => {
 
             </div>
         </div>
-    , document.getElementById("root") as Element)
+    , document.body)
 };
 
 //#region Styles
