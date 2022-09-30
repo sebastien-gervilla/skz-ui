@@ -1,17 +1,19 @@
 import React, { CSSProperties } from 'react';
 import ReactDOM from 'react-dom';
+import { useTimeout } from '../../index';
 
 export interface SnackbarProps {
     open: boolean,
     onClose: () => void,
     message: string,
-    buttonText?: string,
-    className?: string
+    buttonText: string,
+    className: string,
+    closeDelay?: number | null
 }
 
-const Snackbar = (props: SnackbarProps) => {
+const Snackbar = ({open, onClose, message, buttonText = 'UNDO', className = '', closeDelay = null}: SnackbarProps) => {
 
-    const { open, onClose, message, buttonText, className } = props;
+    useTimeout(onClose, closeDelay);
 
     const handleClose = (event: React.MouseEvent): void => {
         event.preventDefault();
