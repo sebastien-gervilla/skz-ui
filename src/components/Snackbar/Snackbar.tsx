@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { useTimeout } from '../../index';
 
@@ -13,21 +13,24 @@ export interface SnackbarProps {
 
 const Snackbar = ({open, onClose, message, buttonText = 'UNDO', className = '', closeDelay = null}: SnackbarProps) => {
 
-    useTimeout(onClose, closeDelay);
+    const [show, setShow] = useState(open);
+    useEffect(() => setShow(open), [open]);
+
+    show && useTimeout(onClose, closeDelay);
 
     const handleClose = (event: React.MouseEvent): void => {
         event.preventDefault();
         onClose();
     }
 
-    return open && ReactDOM.createPortal(
+    return show && ReactDOM.createPortal(
         <div className={"skz-snackbar" + className ? ` ${className}` : ''} style={_sSnackbar}>
 
             <p className='skz-snackbar_message' style={_sText}>{message}</p>
             <button className='skz-snackbar_close-btn' onClick={handleClose} style={_sButton}>{buttonText}</button>
 
         </div>
-    , document.getElementById("root") as Element)
+    , document.body)
 };
 
 //#region Styles
