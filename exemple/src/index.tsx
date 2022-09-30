@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom/client'
-import { SkzModal } from 'skz-ui';
+import { Snackbar } from 'skz-ui';
 
 const App = () => {
-    const [openModal, setOpenModal] = useState(false);
+    const [openSnackbar, setOpenSnackbar] = useState(false);
 
     return (
         <div className="App">
-            <button onClick={() => setOpenModal(true)}>Open modal</button>
-            <SkzModal 
-                open={openModal}
-                setOpen={setOpenModal}
-                body={
-                    <p>Hello world !</p>
-                }
+            <button onClick={() => setOpenSnackbar(true)}>Open snackbar !</button>
+            <Snackbar 
+                open={openSnackbar}
+                onClose={() => setOpenSnackbar(false)}
+                message={'You received a notification !'}
+                buttonText={'CLOSE'}
+                className={'my-snackbar'}
             />
         </div>
     );

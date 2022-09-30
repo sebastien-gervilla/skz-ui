@@ -1365,10 +1365,10 @@ semver@^5.7.0, semver@^5.7.1:
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
   integrity sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==
 
-skz-ui@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/skz-ui/-/skz-ui-0.0.2.tgz#4007b1d9f2f4d247692705d5a2e805096a0ef51f"
-  integrity sha512-5+wYLmx2amsXsFsaXjxNcwzKE4yvBHz4Tzsq7e69ufmwCGIawHdjL/47CmSyStt4Ud1xaA4HkbITVfyBG8DdyA==
+skz-ui@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/skz-ui/-/skz-ui-0.0.7.tgz#3c0534ad0decd5f674fbf628583cb0474ef5fb69"
+  integrity sha512-5IYPGvNotmWRhSr8tn7ZoTdTp0TETbKsWmUjJE+/vPhWcEvlWmq51M/N4eyLx13o3Kd642OCo+jgST61xHFHRg==
 
 source-map-support@~0.5.20:
   version "0.5.21"
