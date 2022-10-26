@@ -38,12 +38,12 @@ const Modal = ({open, onClose, body, keepFocus = false}: SkzModalProps) => {
 //#region Styles
 
 const _sModalWrapper: CSSProperties = {
-    position: 'absolute',
+    position: 'fixed',
     top: 0,
     left: 0,
     bottom: 0,
     right: 0,
-    backgroundColor: '#ccc'
+    backgroundColor: 'rgba(100, 100, 100, 0.2)'
 }
 
 const _sModal: CSSProperties = {
