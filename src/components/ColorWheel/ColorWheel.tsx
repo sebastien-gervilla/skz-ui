@@ -17,7 +17,7 @@ const ColorWheel = ({size = 150, color, onColorChange}: SkzColorWheelProps) => {
     useEffect(() => {
         if (!canvasRef.current) return;
         drawColorWheel(canvasRef.current, size);
-    }, [canvasRef.current]);
+    }, [canvasRef, size]);
 
     return (
         <div className="skz-color-wheel_wrapper" style={_sWheelWrapper}>
