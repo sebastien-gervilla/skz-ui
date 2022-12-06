@@ -144,8 +144,8 @@ const rgbToHsv = ({r, g, b}: RgbColor) => {
     const max = Math.max(r, g, b), 
     min = Math.min(r, g, b);
     let h = max, 
-        s = max, 
-        v = max;
+        s = max;
+    const v = max;
   
     const diff = max - min;
     s = (max === 0) ? 0 : diff / max;
