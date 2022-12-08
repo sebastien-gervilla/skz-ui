@@ -63,7 +63,8 @@ const _sWheelWrapper: CSSProperties = {
 }
 
 const _sWheel: CSSProperties = {
-    borderRadius: '50%'
+    borderRadius: '50%',
+    cursor: 'pointer'
 }
 
 const _sPointer: CSSProperties = {
@@ -73,7 +74,8 @@ const _sPointer: CSSProperties = {
     height: 5,
     border: '1px solid white',
     borderRadius: '50%',
-    pointerEvents: 'none'
+    pointerEvents: 'none',
+    cursor: 'pointer'
 }
 
 //#endregion
