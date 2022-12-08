@@ -113,20 +113,17 @@ const getWheelDimensions = (width: number) => {
     };
 }
 
-export function translateWheelAngle(wheelAngle: number, angle: number) {
-    angle = 360 - wheelAngle + angle;
-    return mod(angle, 360);
-}
+const translateWheelAngle = (angle: number) => mod(150 - angle, 360);
 
 export const getWheelHandlePosition = (width: number, hex: string) => {
     const hsv = hexToHsv(hex);
     const { cx, cy } = getWheelDimensions(width);
     const handleRange = width / 2;
-    const handleAngle = (180 + translateWheelAngle(width, hsv.h)) * ((Math.PI * 2) / 360);
+    const handleAngle = (180 + translateWheelAngle(hsv.h)) * ((Math.PI * 2) / 360);
     const handleDist = (hsv.s / 100) * handleRange;
     return {
         x: (cx + handleDist * Math.cos(handleAngle) * 1) - 2,
-        y: (cy + handleDist * Math.sin(handleAngle) * -1) - 2,
+        y: (cy + handleDist * Math.sin(handleAngle) * 1) - 2,
     };
 }
 
