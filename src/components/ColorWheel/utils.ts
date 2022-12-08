@@ -69,26 +69,34 @@ export const drawColorWheel = (canvas: HTMLCanvasElement, size = 150) => {
     }
 }
 
+const getCanvasContext = (canvas: HTMLCanvasElement) => canvas.getContext("2d", {willReadFrequently: true});
+
 const getColorArray = (event: SyntheticEvent) => {
     const canvas = <HTMLCanvasElement>event.target;
     const nativeEvent = <MouseEvent>event.nativeEvent;
-    const context = <CanvasRenderingContext2D>canvas.getContext("2d");
+    const context = getCanvasContext(canvas);
     const x = parseFloat(nativeEvent.offsetX.toString());
     const y = parseFloat(nativeEvent.offsetY.toString());
-    return context.getImageData(x, y, 1, 1).data;
+    return context?.getImageData(x, y, 1, 1).data || [0, 0, 0];
 }
 
-const getColors = (event: SyntheticEvent) => {
+const getHexColors = (event: SyntheticEvent) => {
     const colors = getColorArray(event);
-    return [colors[0], colors[1], colors[2]];
+    const r = colors[0].toString(16);
+    const g = colors[1].toString(16);
+    const b = colors[2].toString(16);
+    return [
+        colors[0] > 16 ? r : '0' + r,
+        colors[1] > 16 ? g : '0' + g,
+        colors[2] > 16 ? b : '0' + b,
+    ];
 }
 
 export const handleHoverWheel = (event: SyntheticEvent, isDragging: boolean, onColorChange: (color: string) => void) => {
     if (!isDragging) return;
-    const rgbArray = getColors(event);
-    const hex = rgbArray.map(color => color.toString(16)).join('');
+    const hexArray = getHexColors(event);
+    const hex = hexArray.join('');
     hex && onColorChange(hex);
-    return hex;
 }
 
 // ====================== //
@@ -117,8 +125,8 @@ export const getWheelHandlePosition = (width: number, hex: string) => {
     const handleAngle = (180 + translateWheelAngle(width, hsv.h)) * ((Math.PI * 2) / 360);
     const handleDist = (hsv.s / 100) * handleRange;
     return {
-        x: cx + handleDist * Math.cos(handleAngle) * -1,
-        y: cy + handleDist * Math.sin(handleAngle) * -1,
+        x: (cx + handleDist * Math.cos(handleAngle) * 1) - 2,
+        y: (cy + handleDist * Math.sin(handleAngle) * -1) - 2,
     };
 }
 
@@ -132,38 +140,36 @@ interface RgbColor {
     b: number
 }
 
-const isValidHex = (hex: string) => /^#([A-Fa-f0-9]{3,4}){1,2}$/.test(hex);
+interface HsvColor {
+    h: number,
+    s: number,
+    v: number
+}
+
+const isValidHex = (hex: string) => /([A-Fa-f0-9]{3,4}){1,2}$/.test(hex);
 
 const getChunksFromString = (hex: string, chunkSize: number) => hex.match(new RegExp(`.{${chunkSize}}`, "g"));
 
 const convertHexUnitTo256 = (hexStr: string) => parseInt(hexStr.repeat(2 / hexStr.length), 16);
 
-const rgbToHsv = ({r, g, b}: RgbColor) => {
-    r /= 255, g /= 255, b /= 255;
+export const rgbToHsv = ({ r, g, b }: RgbColor): HsvColor => {
+    const max = Math.max(r, g, b);
+    const delta = max - Math.min(r, g, b);
   
-    const max = Math.max(r, g, b), 
-    min = Math.min(r, g, b);
-    let h = max, 
-        s = max;
-    const v = max;
+    const hh = delta
+        ? max === r
+            ? (g - b) / delta
+            : max === g
+            ? 2 + (b - r) / delta
+            : 4 + (r - g) / delta
+        : 0;
   
-    const diff = max - min;
-    s = (max === 0) ? 0 : diff / max;
-  
-    if (max === min)
-        h = 0;
-    else {
-        switch (max) {
-            case r: h = (g - b) / diff + (g < b ? 6 : 0); break;
-            case g: h = (b - r) / diff + 2; break;
-            case b: h = (r - g) / diff + 4; break;
-        }
-  
-        h /= 6;
-    }
-  
-    return { h, s, v };
-}
+    return {
+        h: 60 * (hh < 0 ? hh + 6 : hh),
+        s: max ? (delta / max) * 100 : 0,
+        v: (max / 255) * 100
+    };
+};
 
 const DEFAULT_RGB = { r: 0, g: 0, b: 0};
 const hexToRgb = (hex: string) => {
