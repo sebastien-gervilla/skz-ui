@@ -1,4 +1,4 @@
-import React, { CSSProperties, useEffect, useRef, useState } from 'react';
+import React, { CSSProperties, SyntheticEvent, useEffect, useRef } from 'react';
 import { drawColorWheel, getWheelHandlePosition, handleHoverWheel } from './utils.js';
 
 export interface SkzColorWheelProps {
@@ -11,8 +11,19 @@ const ColorWheel = ({size = 150, color, onColorChange}: SkzColorWheelProps) => {
 
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
-    const [isDragging, setIsDragging] = useState(false);
+    const draggingRef = useRef<boolean>(false);
     const pointerPos = getWheelHandlePosition(size, color);
+
+    const startDragging = (event: SyntheticEvent) => {
+        if (draggingRef.current) return;
+        draggingRef.current = true;
+        handleHoverWheel(event, true, onColorChange);
+    }
+
+    const stopDragging = () => {
+        if (!draggingRef.current) return;
+        draggingRef.current = false;
+    }
 
     useEffect(() => {
         if (!canvasRef.current) return;
@@ -22,17 +33,17 @@ const ColorWheel = ({size = 150, color, onColorChange}: SkzColorWheelProps) => {
     return (
         <div className="skz-color-wheel_wrapper" style={_sWheelWrapper}>
             <canvas 
-                id='skz-color-wheel'
                 className='skz-color-wheel'
-                onMouseDown={() => setIsDragging(true)}
-                onMouseUp={() => setIsDragging(false)}
-                onMouseMove={event => handleHoverWheel(event, isDragging, onColorChange)}
+                onMouseDown={startDragging}
+                onMouseUp={stopDragging}
+                onMouseMove={event => handleHoverWheel(event, draggingRef.current, onColorChange)}
                 ref={canvasRef}
                 style={_sWheel}
             >
             </canvas>
             <div 
                 className="pointer" 
+                onMouseUp={stopDragging}
                 style={{
                     ..._sPointer, 
                     borderColor: color,
@@ -56,9 +67,13 @@ const _sWheel: CSSProperties = {
 }
 
 const _sPointer: CSSProperties = {
-    position: 'relative',
-    border: '50px solid #f00',
-    borderRadius: '50%'
+    position: 'absolute',
+    content: '',
+    width: 5,
+    height: 5,
+    border: '1px solid white',
+    borderRadius: '50%',
+    pointerEvents: 'none'
 }
 
 //#endregion
