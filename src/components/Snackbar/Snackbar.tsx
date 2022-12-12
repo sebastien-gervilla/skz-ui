@@ -22,7 +22,6 @@ const Snackbar = ({open, onClose, message, buttonText = 'UNDO', className = '', 
             setTimoutId(setTimeout(onClose, closeDelay));
     
         return () => { timeoutId && clearTimeout(timeoutId) };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [closeDelay, onClose, open]);
 
     const handleClose = (event: React.MouseEvent): void => {
