@@ -1,4 +1,4 @@
-import React, { CSSProperties, useEffect, useState } from 'react';
+import React, { CSSProperties, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 
 export interface SnackbarProps {
@@ -12,16 +12,16 @@ export interface SnackbarProps {
 
 const Snackbar = ({open, onClose, message, buttonText = 'UNDO', className = '', closeDelay = null}: SnackbarProps) => {
 
-    const [timeoutId, setTimoutId] = useState<number | null>(null);
+    const timeoutRef = useRef<number | null>(null);
 
     useEffect(() => {
         if (!closeDelay || closeDelay < 0) return;
-        timeoutId && clearTimeout(timeoutId);
+        timeoutRef.current && clearTimeout(timeoutRef.current);
 
         if (open)
-            setTimoutId(setTimeout(onClose, closeDelay));
+            timeoutRef.current = setTimeout(onClose, closeDelay);
     
-        return () => { timeoutId && clearTimeout(timeoutId) };
+        return () => { timeoutRef.current && clearTimeout(timeoutRef.current) };
       }, [closeDelay, onClose, open]);
 
     const handleClose = (event: React.MouseEvent): void => {
