@@ -10,13 +10,13 @@ A React component library with some cool features !
 ## Installation:
 
 ```bash
-npm install skz-ui --save-dev
+npm install skz-ui
 ```
 
 or
 
 ```bash
-yarn add -D skz-ui
+yarn add skz-ui
 ```
 
 ## Usage :
