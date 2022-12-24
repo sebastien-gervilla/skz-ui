@@ -4,10 +4,11 @@ export interface SkzSwitchProps {
     checked: boolean,
     onChange: (willBeChecked: boolean) => void,
     color?: string,
+    offColor?: string,
     size?: number
 }
 
-const Sidebar = ({checked, onChange, color = '#009BE6', size = 35}: SkzSwitchProps) => {
+const Sidebar = ({checked, onChange, color = '#009BE6', offColor = '#bbb', size = 35}: SkzSwitchProps) => {
 
     const handleSwitch = () => onChange(!checked);
 
@@ -17,7 +18,7 @@ const Sidebar = ({checked, onChange, color = '#009BE6', size = 35}: SkzSwitchPro
                 className="skz-switch" 
                 style={{
                     ..._sSwitch,
-                    backgroundColor: checked ? color : '#bbb',
+                    backgroundColor: checked ? color : offColor,
                     opacity: .4,
                     width: size,
                     height: size / 2.5,
@@ -34,7 +35,7 @@ const Sidebar = ({checked, onChange, color = '#009BE6', size = 35}: SkzSwitchPro
                     height: size * .6,
                     right: checked ? '100%' : 0,
                     transform: checked ? 'translate(70%, -50%)' : 'translate(30%, -50%)',
-                    backgroundColor: checked ? color : '#bbb'
+                    backgroundColor: checked ? color : offColor
                 }}
             >
 
