@@ -1,5 +1,5 @@
-import { Modal, Snackbar, Sidebar, Popup, ColorWheel, Switch } from './components';
+import { Modal, Snackbar, Sidebar, Popup, ColorWheel, Switch, Alert } from './components';
 import { useTimeout } from './utils';
 
-export { Modal, Snackbar, Sidebar, Popup, ColorWheel, Switch };
+export { Modal, Snackbar, Sidebar, Popup, ColorWheel, Switch, Alert };
 export { useTimeout };
