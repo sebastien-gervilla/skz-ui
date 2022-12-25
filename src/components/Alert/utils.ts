@@ -1,0 +1,1 @@
+export type WarningType = 'Error' | 'Warning' | 'Info' | 'Success';
