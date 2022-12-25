@@ -21,18 +21,20 @@ yarn add skz-ui
 
 ## Usage :
 
-Add `SkzModal` to your component:
+Add `Modal` to your component:
 
 ```js
-import React, { useState } from 'react'
-import { Modal } from 'skz-ui'
+import React, { useState } from 'react';
+import { Modal } from 'skz-ui';
 
 const App = () => {
     const [openModal, setOpenModal] = useState(false);
 
     return (
         <div className="App">
-            <button onClick={() => setOpenModal(true)}>Open modal</button>
+            <button onClick={() => setOpenModal(true)}>
+                Open modal
+            </button>
             <Modal 
                 open={openModal}
                 onClose={() => setOpenModal(false)}
