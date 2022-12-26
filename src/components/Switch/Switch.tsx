@@ -13,7 +13,7 @@ const Switch = ({checked, onChange, color = '#009BE6', offColor = '#bbb', size =
     const handleSwitch = () => onChange(!checked);
 
     return (
-        <div className="skz-switch" onClick={handleSwitch}>
+        <div className="skz-switch_wrapper" onClick={handleSwitch}>
             <div 
                 className="skz-switch" 
                 style={{
