@@ -8,7 +8,7 @@ export interface SkzSwitchProps {
     size?: number
 }
 
-const Sidebar = ({checked, onChange, color = '#009BE6', offColor = '#bbb', size = 35}: SkzSwitchProps) => {
+const Switch = ({checked, onChange, color = '#009BE6', offColor = '#bbb', size = 35}: SkzSwitchProps) => {
 
     const handleSwitch = () => onChange(!checked);
 
@@ -63,4 +63,4 @@ const _sThumb: CSSProperties = {
 
 //#endregion
 
-export default Sidebar;
+export default Switch;
