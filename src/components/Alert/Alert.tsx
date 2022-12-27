@@ -52,8 +52,7 @@ const Alert = ({ type, message, colorType = type, showType = true }: SkzAlertPro
 const _sAlert: CSSProperties = {
     display: 'flex',
     alignItems: 'center',
-    padding: 15,
-    fontFamily: 'Helvetica, Arial'
+    padding: 15
 }
 
 const _sText: CSSProperties = {
