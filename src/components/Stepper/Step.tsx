@@ -39,8 +39,7 @@ const Step = ({step, index, text, color = '#009BE6', textColor = '#fff'}: SkzSte
 const _sStepWrapper: CSSProperties = {
     display: 'flex',
     alignItems: 'center',
-    marginRight: 15,
-    fontFamily: 'Helvetica, Arial'
+    marginRight: 15
 }
 
 const _sStep: CSSProperties = {
