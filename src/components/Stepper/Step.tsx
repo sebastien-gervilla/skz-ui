@@ -50,7 +50,8 @@ const _sStep: CSSProperties = {
     width: 35,
     height: 35,
     margin: 15,
-    borderRadius: '50%'
+    borderRadius: '50%',
+    transition: '.2s ease'
 }
 
 const _sIcon: CSSProperties = {
