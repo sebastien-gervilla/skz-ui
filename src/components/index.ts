@@ -6,5 +6,6 @@ import ColorWheel from "./ColorWheel";
 import Switch from "./Switch";
 import Alert from "./Alert";
 import ProgressBar from "./ProgressBar";
+import { Stepper, Step } from "./Stepper";
 
-export { Modal, Snackbar, Sidebar, Popup, ColorWheel, Switch, Alert, ProgressBar };
+export { Modal, Snackbar, Sidebar, Popup, ColorWheel, Switch, Alert, ProgressBar, Stepper, Step };
