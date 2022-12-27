@@ -48,7 +48,6 @@ const _sSnackbar: CSSProperties = {
     display: 'flex',
     maxWidth: '25vw',
     padding: 15,
-    fontFamily: 'Helvetica, Arial',
     textAlign: 'left',
     backgroundColor: '#123',
     color: 'white',
