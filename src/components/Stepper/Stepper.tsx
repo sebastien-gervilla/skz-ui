@@ -30,7 +30,7 @@ const Stepper = ({step, children, color = '#009BE6', textColor = '#fff'}: SkzSte
                 />
 
             return (
-                <React.Fragment>
+                <React.Fragment key={index}>
                     {index !== 0 && 
                         <div 
                             className="skz-step-divider_wrapper" 
