@@ -15,7 +15,7 @@ const Stars = ({rating, onChange, maxRate = 5, color = '#fadb14', offColor = '#b
     const handleChangeStars = (index: number) => onChange(index);
 
     const handleDisplayStars = () => {
-        let stars = [];
+        const stars = [];
         for (let i = 0; i < maxRate; i++)
             stars.push(<Star 
                 key={i}
@@ -27,7 +27,6 @@ const Stars = ({rating, onChange, maxRate = 5, color = '#fadb14', offColor = '#b
             />);
         return stars;
     }
-    console.log(size);
     
     return (
         <div className="skz-stars_wrapper" style={_sStars}>
