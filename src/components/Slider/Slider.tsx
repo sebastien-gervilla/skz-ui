@@ -37,7 +37,7 @@ const Slider = ({
         return size * (newValue - min) / (max - min);
     };
 
-    const position = useMemo<number>(getPosition, [value]);
+    const position = useMemo<number>(getPosition, [value, size, min, max]);
 
     const startDragging = () => {
         if (isDragging || disabled) return;
