@@ -2,30 +2,32 @@ import React, { CSSProperties } from 'react';
 
 export interface SkzTagProps {
     text: string,
-    fontSize?: number,
-    textColor?: string,
-    color?: string,
     leftEl?: JSX.Element,
     rightEl?: JSX.Element,
-    styles?: CSSProperties
+    style?: CSSProperties
 }
 
-const Tag = ({text, fontSize = 13, color = '#0087D225', textColor = '#005F91', leftEl, rightEl, styles}: SkzTagProps) => {
+const Tag = ({text, leftEl, rightEl, style}: SkzTagProps) => {
 
     return (
         <div className="skz-tag_wrapper" style={_sTagWrapper}>
             <div 
                 className="skz-tag" 
                 style={{
-                    ..._sTag, 
-                    ...styles, 
-                    backgroundColor: color, 
-                    color: textColor, 
-                    fontSize
+                    ..._sTag,
+                    ...style
                 }}
             >
                 {Boolean(leftEl) && leftEl}
-                <p style={_sText}>{text}</p>
+                <p 
+                    style={{
+                        ..._sText,
+                        marginLeft: leftEl ? 5 : 0,
+                        marginRight: rightEl ? 5 : 0
+                    }}
+                >
+                    {text}
+                </p>
                 {Boolean(rightEl) && rightEl}
             </div>
         </div>
@@ -43,7 +45,9 @@ const _sTag: CSSProperties = {
     alignItems: 'center',
     padding: '7px 15px',
     borderRadius: 9999,
-    fontFamily: 'Helvetica, Arial'
+    fontSize: 13,
+    color: '#005F91',
+    backgroundColor: '#0087D225',
 }
 
 const _sText: CSSProperties = {
