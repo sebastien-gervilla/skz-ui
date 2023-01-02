@@ -10,6 +10,7 @@ export interface SkzSliderProps {
     offColor?: string,
     size?: number,
     wrapperStyles?: CSSProperties,
+    hideTooltip?: boolean,
     vertical?: boolean,
     disabled?: boolean
 }
@@ -23,6 +24,7 @@ const Slider = ({
         offColor = '#bbb', 
         size = 180,
         wrapperStyles = {},
+        hideTooltip = false,
         vertical = false,
         disabled = false
     }: SkzSliderProps) => {
@@ -106,7 +108,7 @@ const Slider = ({
                     cursor: disabled ? 'not-allowed' : 'pointer'
                 }}
             >
-                {isDragging && 
+                {(isDragging && !hideTooltip) && 
                     <div 
                         className="skz-slider_tooltip" 
                         style={{
@@ -175,7 +177,8 @@ const _sTooltip: CSSProperties = {
     padding: 5,
     minWidth: 20,
     minHeight: 20,
-    backgroundColor: '#fff',
+    color: '#fff',
+    backgroundColor: '#343434',
     fontSize: 14,
     transform: 'translate(-50%, -50%)',
     boxShadow: "rgba(70, 70, 70, 0.3) 2px 2px 15px 0px"
@@ -186,7 +189,7 @@ const _sTriangle: CSSProperties = {
     zIndex: -1,
     width: 10,
     height: 10,
-    backgroundColor: '#fff',
+    backgroundColor: '#343434',
     transform: 'translate(-50%, -50%) rotate(45deg)',
     transition: '.2se ease'
 }
