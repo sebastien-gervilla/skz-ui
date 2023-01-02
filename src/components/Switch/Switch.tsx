@@ -13,7 +13,7 @@ const Switch = ({checked, onChange, color = '#009BE6', offColor = '#bbb', size =
     const handleSwitch = () => onChange(!checked);
 
     return (
-        <div className="skz-switch_wrapper" onClick={handleSwitch}>
+        <div className="skz-switch_wrapper" onClick={handleSwitch} style={_sSwitchWrapper}>
             <div 
                 className="skz-switch" 
                 style={{
@@ -46,8 +46,11 @@ const Switch = ({checked, onChange, color = '#009BE6', offColor = '#bbb', size =
 
 //#region Styles
 
+const _sSwitchWrapper: CSSProperties = {
+    position: 'relative'
+}
+
 const _sSwitch: CSSProperties = {
-    position: 'relative',
     backgroundColor: '#aaa',
     cursor: 'pointer'
 }
