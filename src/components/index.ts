@@ -10,5 +10,4 @@ import Tag from "./Tag";
 import Stars from "./Stars";
 import Slider from "./Slider";
 
-export { Modal, Snackbar, Sidebar, Popup, ColorWheel, Switch, Alert, ProgressBar, Tag };
-export { Modal, Snackbar, Sidebar, Popup, ColorWheel, Switch, Alert, ProgressBar, Stars, Slider };
+export { Modal, Snackbar, Sidebar, Popup, ColorWheel, Switch, Alert, ProgressBar, Stars, Slider, Tag };
