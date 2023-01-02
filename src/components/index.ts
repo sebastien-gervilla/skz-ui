@@ -7,5 +7,6 @@ import Switch from "./Switch";
 import Alert from "./Alert";
 import ProgressBar from "./ProgressBar";
 import Stars from "./Stars";
+import Slider from "./Slider";
 
-export { Modal, Snackbar, Sidebar, Popup, ColorWheel, Switch, Alert, ProgressBar, Stars };
+export { Modal, Snackbar, Sidebar, Popup, ColorWheel, Switch, Alert, ProgressBar, Stars, Slider };

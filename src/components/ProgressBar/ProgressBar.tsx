@@ -2,17 +2,38 @@ import React, { CSSProperties, useEffect, useRef } from 'react';
 import { getProgression } from './utils';
 
 export interface SkzProgressBarProps {
+    value?: number,
+    style?: CSSProperties,
     color?: string,
     barColor?: string,
     size?: number,
+    trackScroll?: boolean
 }
 
-const ProgressBar = ({color = '#009BE6', barColor = '#ccc', size = 8}: SkzProgressBarProps) => {
+const ProgressBar = ({
+        value = 0,
+        style = _sProgressBar,
+        color = '#009BE6',
+        trackScroll = false
+    }: SkzProgressBarProps) => {
 
     const progressRef = useRef<HTMLDivElement>(null);
+    const progressBarRef = useRef<HTMLDivElement>(null);
+
+    const getProgressWidth = () => {
+        if (!progressBarRef.current) return 0;
+        const rect = progressBarRef.current.getBoundingClientRect();
+        value = value > 100 ? 100 : value < 0 ? 0 : value;
+        return (value * rect.width) / 100;
+    }
+
+    useEffect(() => {
+        if (!progressRef.current || trackScroll) return;
+        progressRef.current.style.width = getProgressWidth() + 'px';
+    }, [value]);
     
     useEffect(() => {
-        window.addEventListener('scroll', () => {
+        trackScroll && window.addEventListener('scroll', () => {
             if (!progressRef.current) return;
             progressRef.current.style.width = getProgression();
         })
@@ -20,8 +41,22 @@ const ProgressBar = ({color = '#009BE6', barColor = '#ccc', size = 8}: SkzProgre
     
 
     return (
-        <div className="skz-progress-bar" style={{..._sProgressBar, backgroundColor: barColor, height: size || 8}}>
-            <div ref={progressRef} className="skz-progress" style={{..._sProgress, backgroundColor: color}}>
+        <div 
+            className="skz-progress-bar"
+            ref={progressBarRef}
+            style={{
+                ..._sProgressBar,
+                ...style
+            }}
+        >
+            <div 
+                ref={progressRef} 
+                className="skz-progress" 
+                style={{
+                    ..._sProgress, 
+                    backgroundColor: color
+                }}
+            >
 
             </div>
         </div>
@@ -31,15 +66,15 @@ const ProgressBar = ({color = '#009BE6', barColor = '#ccc', size = 8}: SkzProgre
 //#region Styles
 
 const _sProgressBar: CSSProperties = {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0
+    width: 140,
+    height: 16,
+    backgroundColor: '#ccc'
 }
 
 const _sProgress: CSSProperties = {
     width: '0%',
-    height: '100%'
+    height: '100%',
+    transition: '.1s ease'
 }
 
 //#endregion
