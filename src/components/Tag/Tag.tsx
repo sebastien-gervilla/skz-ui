@@ -1,13 +1,16 @@
 import React, { CSSProperties } from 'react';
+import { colorSet, colorSets } from './colors';
 
 export interface SkzTagProps {
     text: string,
+    colorSet?: colorSet,
     leftEl?: JSX.Element,
     rightEl?: JSX.Element,
-    style?: CSSProperties
+    style?: CSSProperties,
+    withBorder?: boolean
 }
 
-const Tag = ({text, leftEl, rightEl, style}: SkzTagProps) => {
+const Tag = ({text, colorSet = 'blue', leftEl, rightEl, style, withBorder = false}: SkzTagProps) => {
 
     return (
         <div className="skz-tag_wrapper" style={_sTagWrapper}>
@@ -15,6 +18,9 @@ const Tag = ({text, leftEl, rightEl, style}: SkzTagProps) => {
                 className="skz-tag" 
                 style={{
                     ..._sTag,
+                    border: withBorder ? '1px solid' : 'none',
+                    ... (colorSet && colorSet in colorSets ? 
+                            colorSets[colorSet] : colorSets.cyan),
                     ...style
                 }}
             >
@@ -51,7 +57,8 @@ const _sTag: CSSProperties = {
 }
 
 const _sText: CSSProperties = {
-    margin: 0
+    margin: 0,
+    fontFamily: 'inherit'
 }
 
 //#endregion
