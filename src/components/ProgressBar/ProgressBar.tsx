@@ -27,17 +27,20 @@ const ProgressBar = ({
         return (value * rect.width) / 100;
     }
 
+    const updateProgressBar = () => {
+        if (!progressRef.current) return;
+        progressRef.current.style.width = getProgression();
+    }
+
     useEffect(() => {
         if (!progressRef.current || trackScroll) return;
         progressRef.current.style.width = getProgressWidth() + 'px';
     }, [value]);
     
     useEffect(() => {
-        trackScroll && window.addEventListener('scroll', () => {
-            if (!progressRef.current) return;
-            progressRef.current.style.width = getProgression();
-        })
-    }, []);
+        window.removeEventListener('scroll', updateProgressBar);
+        trackScroll && window.addEventListener('scroll', updateProgressBar);
+    }, [trackScroll]);
     
 
     return (
